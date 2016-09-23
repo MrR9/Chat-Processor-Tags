@@ -76,7 +76,7 @@ stock void CPrintToChat(int iClient, const char[] sMessage, any ...)
 	if (!IsClientInGame(iClient)) {
 		ThrowError("Client %d is not in game", iClient);
 	}
-	
+
 	char sBuffer[_CV_MAX_MESSAGE_LENGTH];
 	SetGlobalTransTarget(iClient);
 	VFormat(sBuffer, sizeof(sBuffer), sMessage, 3);
@@ -86,7 +86,7 @@ stock void CPrintToChat(int iClient, const char[] sMessage, any ...)
 
 	CProcessVariables(sBuffer, sizeof(sBuffer));
 	CAddWhiteSpace(sBuffer, sizeof(sBuffer));
-	
+
 	SendPlayerMessage(iClient, sBuffer, g_iAuthor);
 	g_iAuthor = 0;
 }
