@@ -8,7 +8,7 @@
 #pragma semicolon 1
 #pragma newdecls required
 
-#define PLUGIN_VERSION		"1.0"
+#define PLUGIN_VERSION		"1.1"
 
 public Plugin myinfo = {
 	name		= "Chat-Processor Tags",
@@ -288,15 +288,17 @@ public void OnChatMessagePost(int iAuthor, ArrayList hRecipients, eChatFlags fFl
 				Format(strNewName, MAXLENGTH_256, "\x08%s%s%s", g_strTagColor[iAuthor], g_strTag[iAuthor], strNewName);
 			}
 		}
-		
-		// This is where things function differently than Custom Chat Colors
-		// This bit needs to be outside the above so that the tag actually displays in chat.
-		// If it was up above, just after line 311, the tag would never show up in chat.
-		// Why? Well, for TF2, you don't really *need* to use the 'tagcolor' config option.
-		// So because no "tagcolor" line, it never proceeds to display the tag.
-		// Seriously, just stick the "{valve}"-style color codes from ColorVariables.inc right into the "tag" line in your config file.
-		// I modified this plugin to work that way for a reason.
-		Format(strNewName, MAXLENGTH_256, "%s%s", g_strTag[iAuthor], strNewName);
+		else
+		{
+			// This is where things function differently than Custom Chat Colors
+			// This bit needs to be outside the above so that the tag actually displays in chat.
+			// If it was up above, just after line 311, the tag would never show up in chat.
+			// Why? Well, for TF2, you don't really *need* to use the 'tagcolor' config option.
+			// So because no "tagcolor" line, it never proceeds to display the tag.
+			// Seriously, just stick the "{valve}"-style color codes from ColorVariables.inc right into the "tag" line in your config file.
+			// I modified this plugin to work that way for a reason.
+			Format(strNewName, MAXLENGTH_256, "%s%s", g_strTag[iAuthor], strNewName);
+		}
 	}
    
 	if(strlen(g_strTextColor[iAuthor]) > 0 && CheckForward(iAuthor, strNewMessage, CPT_TextColor))

@@ -22,11 +22,29 @@ sm_cpt_version - Standard version ConVar, do not touch.
 
 
 # Converting custom-chatcolors.cfg entries for use in chat-processor-tags.cfg
-Simply copy your the entries over to this config file. The easiest way to do this is to change the "admin_colors" bit at the top of custom-chatcolors.cfg to "chat_processor_tags". Then copy the entirety of the now-named "chat_processor_tags" code into chat-processor-tags.cfg.
+_[Here's a list of named colors within ColorVariables that you can use in the "tag" lines of the config](http://pastebin.com/nSy4ieVL)_ . You can also just take a hex color code (i.e. #FF5365) and wrap it in brackets and use it like this: {#FF5365}. And yes, you can intermix the hex color codes and the named color codes like this:
 
-From there, you can modify the tags as you see fit. For the most part you can just leave everything alone in the config file.
+"tag" "{#FFC000}[{valve}PLUGIN DEV{#FFC000}] "
 
-If you want to make your tags have multiple colors, then you can remove the "tagcolor" line from the specific tag entry and add the proper coloring into the "tag" line.
+This depends on if you want to have multiple colors in your chat tags.
+
+__If you want to use multiple colors in a tag__
+1. Copy the contents of your original custom-chatcolors.cfg file and paste them into chat-processor-tags.cfg
+2. Change "admin_colors" at top of the entries to "chat_processor_tags"
+3. Edit the "tag" line for each of your config entries and add the proper color codes to that line
+4. You can remove the "tagcolor" bits if you want. The plugin now detects if there's color codes in the tag string, and if there are, it'll use those colors.
+
+You can use any hex color code you want simply by putting it inside brackets, like this:
+#FFC000 would be changed to {#FFC000}
+
+For example:
+
+    "tag" "{#FFC000}[{community}ADMIN{#FFC000}] "
+
+__If you don't want to use multiple colors in the tag and you just want to keep your old setup__
+1. Copy the contents of your original custom-chatcolors.cfg file and paste them into chat-processor-tags.cfg
+2. Change "admin_colors" at top of the entries to "chat_processor_tags"
+3. You're done. You don't have to change anything else. Everything should work as normal.
 
 
 # CS:GO Usage
