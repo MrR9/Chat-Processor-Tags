@@ -233,10 +233,6 @@ public void OnChatMessagePost(int iAuthor, ArrayList hRecipients, eChatFlags fFl
 	char strNewMessage[MAXLENGTH_256];
 	strcopy(strNewMessage, sizeof(strNewMessage), strMessage);
 	
-	// Chat flag handling
-	char strChatFlag[64];
-	ChatProcessor_GetChatFlagString(fFlag, strChatFlag, sizeof(strChatFlag));
-	
 	if(CheckForward(iAuthor, strNewMessage, CPT_NameColor))
 	{
 		if(StrEqual(g_strUsernameColor[iAuthor], "G", false))
@@ -359,22 +355,7 @@ public void OnChatMessagePost(int iAuthor, ArrayList hRecipients, eChatFlags fFl
 			// half the player name off or in worse cases, only display like the first four letters of the tag
 			// (for example "[OWN" out of "[OWNER]")
 			CSetNextAuthor(iAuthor);
-			if (StrContains(strChatFlag, "team") != -1 || StrContains(strChatFlag, "survivor") != -1 || StrContains(strChatFlag, "infected") != -1 || StrContains(strChatFlag, "Cstrike_Chat_CT") != -1 || StrContains(strChatFlag, "Cstrike_Chat_T") != -1)
-			{
-				CPrintToChat(client, "\x01(TEAM) %s \x01: %s", strNewName, strNewMessage);
-			}
-			else if (StrContains(strChatFlag, "spec") != -1)
-			{
-				CPrintToChat(client, "\x01*SPEC* %s \x01: %s", strNewName, strNewMessage);
-			}
-			else if (StrContains(strChatFlag, "dead") != -1)
-			{
-				CPrintToChat(client, "\x01*DEAD* %s \x01: %s", strNewName, strNewMessage);
-			}
-			else if (StrContains(strChatFlag, "all") != -1)
-			{
-				CPrintToChat(client, "%s \x01: %s", strNewName, strNewMessage);
-			}
+			CPrintToChat(client, "%s \x01: %s", strNewName, strNewMessage);
 		}
 	}
    
