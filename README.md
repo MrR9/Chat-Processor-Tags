@@ -24,7 +24,7 @@ sm_cpt_version - Standard version ConVar, do not touch.
 # Converting custom-chatcolors.cfg entries for use in chat-processor-tags.cfg
 _[Here's a list of named colors within ColorVariables that you can use in the "tag" lines of the config](http://pastebin.com/nSy4ieVL)_ . You can also just take a hex color code (i.e. #FF5365) and wrap it in brackets and use it like this: {#FF5365}. And yes, you can intermix the hex color codes and the named color codes like this:
 
-"tag" "{#FFC000}[{valve}PLUGIN DEV{#FFC000}] "
+    "tag" "{#FFC000}[{valve}PLUGIN DEV{#FFC000}] "
 
 This depends on if you want to have multiple colors in your chat tags.
 
